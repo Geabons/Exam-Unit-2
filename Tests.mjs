@@ -1,9 +1,11 @@
+
 function test(description) {
 
     console.log(description);
 
     return {
         isEqual,
+        isNotANumber,
         dosNotThrowError
     }
 }
@@ -28,7 +30,14 @@ function isInRange(recived, expectedLowerBound, expectedUpperBound, description)
     } else {
         console.log(`🔴 ${description}. Expected ${expected}, recived ${recived}`);
     }
+}
 
+function isNotANumber(received, description) {
+    if (isNaN(received)) {
+        console.log(`🟢 ${description}`);
+    } else {
+        console.log(`🔴 ${description}. recived ${received}`);
+    }
 }
 
 function isEqual(recived, expected, description) {
