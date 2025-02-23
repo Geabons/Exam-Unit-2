@@ -34,11 +34,11 @@ console.log(booksWrittenBefore2004(books));
 
 function isbnNumberOfAuthor(authorName) {
     return books
-    .filter(book => book.author.toLowerCase().includes(authorName.toLowerCase()))
-    .map(book => book.isbn);
+        .filter(book => book.author.toLowerCase() === authorName.toLowerCase())
+        .map(book => book.isbn);
 }
 
-console.log(isbnNumberOfAuthor(books));
+console.log(isbnNumberOfAuthor("j.k.rowling"));
 
 function alphabeticallyAscendingBooks() {
     return books.sort((a, b) => a.title.localeCompare(b.title));
@@ -52,17 +52,20 @@ function chronologicallyAscending() {
 
 console.log(chronologicallyAscending(books));
 
-function booksByAuthorLastName() {
+function booksByAuthorLastName(lastName) {
     return books.filter(book => {
         const authorLastName = book.author.split(' ').pop().toLowerCase();
         return authorLastName === lastName.toLowerCase();
     });
 }
 
-console.log(booksByAuthorLastName(books));
+console.log(booksByAuthorLastName("rowling"));
 
-function booksByAuthorFirstName() {
-
+function booksByAuthorFirstName(firstName) {
+    return books.filter(book => {
+        const authorFirstName = book.author.split(' ')[0].toLowerCase();
+        return authorFirstName === firstName.toLowerCase();
+    });
 }
 
-console.log(booksByAuthorFirstName(books));
+console.log(booksByAuthorFirstName("j.k."));
